@@ -1,0 +1,2 @@
+#!/bin/basg
+head /etc/passwd
