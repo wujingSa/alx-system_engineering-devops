@@ -1,0 +1,86 @@
+To address this question comprehensively, let's delve into the concept of a server, a term that will frequently appear throughout this piece.
+
+What Exactly is a Server?
+A server denotes either a computer program or a device serving another computer program and its user, known as the client. This framework is commonly referred to as the client–server model.
+
+Understanding the Client-Server Model
+The client, typically, initiates requests for information. Commonly, clients encompass the various internet-connected devices used by web users, such as computers, laptops, or phones connected to Wi-Fi or mobile networks. These devices employ web-accessing software like Google Chrome, Firefox, or Safari. For instance, in our illustration, the client is the browser, along with the device utilized to access www.google.com.
+
+The server, on the other hand, is responsible for transmitting or serving information to the client. Servers store webpages, websites, or applications. In the context of our example, it refers to the Google server.
+
+When a client device seeks to access a webpage, it solicits a copy of the webpage from the server, which is then downloaded onto the client for display in the user's web browser.
+
+The Internet's Directory: DNS
+When we input a website name or address, technically known as a URL (Uniform Resource Locator), such as https://www.google.com, into our browser and hit Enter, the browser initially dissects the URL into components. This process necessitates Domain Name System (DNS) servers. But let's first understand what a URL entails.
+
+Decoding a URL
+A URL comprises several components: the protocol, hostname, port, path-and-file-name, among others. For the purpose of this discussion, we'll focus on the protocol and hostname. In the case of https://www.google.com, 'https' represents the protocol (more on this later), and 'www.google.com' serves as the hostname, which could be a domain, as in this instance, or an IP address.
+
+DNS: The Internet's Phonebook
+Think of the Domain Name System (DNS) as the internet's equivalent of a phonebook. DNS servers serve as application servers converting domain names, comprehensible to humans, into machine-readable IP addresses. Each internet-connected device possesses a unique IP address utilized by other machines to locate it.
+
+The DNS resolution or DNS lookup process entails four steps (and servers) in loading a webpage:
+
+DNS recursor: This serves as the initial stop, designed to receive queries from clients through applications such as web browsers. If the server already stores the IP address in its cache, it promptly returns it. Otherwise, it's tasked with making additional requests by querying the root DNS server.
+
+Root server or root nameserver: While lacking information about the hostname, it possesses directives on where to locate it, thus redirecting the requests to the appropriate TLD server.
+
+TLD (Top Level Domain): This represents the subsequent stage in the quest for a specific IP address, hosting the final segment of a hostname. In 'google.com,' the TLD server would be 'com.' Subsequently, the request is forwarded to the authoritative nameserver.
+
+Authoritative nameserver: This serves as the final destination in the nameserver query. If the server can access the requested record, it furnishes the IP address for the requested hostname back to the DNS recursor that initiated the initial request. Otherwise, it signals an error indicating the record couldn't be located.
+
+Internet Protocol Suite: The Backbone
+With the browser now aware of the location of www.google.com, it proceeds to establish a connection to access the requested website. Browsers leverage internet protocols to forge such connections.
+
+The Internet Protocol Suite, also known as TCP/IP (where TCP stands for Transmission Control Protocol), represents the prevalent protocol employed for various types of HTTP requests. It delineates a set of regulations governing the format of data transmitted via the internet or local network, encompassing activities like sending emails, streaming videos, or connecting to websites.
+
+Traffic Management and Security
+Upon establishing the TCP connection, the data transfer commences. However, before proceeding, traffic management comes into play, facilitated by a load balancer.
+
+A load balancer, such as HAProxy, functions as a server aiding in handling increased web traffic while averting downtime. It receives traffic from the internet and evenly distributes it among multiple servers to prevent overloading any single server with an excessive number of requests. Load balancers prove indispensable for high-traffic websites like google.com. But can just anyone gain access? Here enters the firewall.
+
+The firewall, whether in software or hardware form, acts as a barricade against unauthorized access to or from private networks. It operates as a barrier between the secured internal network and the most vulnerable network, namely, the internet. The decision to permit or deny traffic hinges on a bespoke set of security rules, encompassing restrictions on the request's IP address, the frequency and volume of requests, or the nature of the requested content. While a load balancer can act as a firewall, additional firewalls can be installed for enhanced security, protection, and to avert SPOFs (single points of failure).
+
+SSL: Fortifying Security
+Given the paramount importance of security in today's digital landscape, an additional layer of security is implemented through Secure Socket Layer (SSL).
+
+SSL represents a protocol catering to servers and web browsers, ensuring that data transmitted between the two remains private. This is accomplished via an SSL certificate, a small data file establishing an encrypted link between a web server and a browser, guaranteeing the confidentiality of all data exchanged.
+
+SSL proves particularly invaluable when exchanging sensitive information such as credit card details, rendering it indecipherable to any eavesdroppers.
+
+How do you ascertain if a website employs an SSL certificate? It's quite simple: scrutinize the URL. If you spot a padlock icon and 'https://' instead of 'http://,' rest assured, your privacy is safeguarded. But what precisely is HTTP/HTTPS?
+
+HTTP/HTTPS Demystified
+HTTP, denoting HyperText Transfer Protocol, ranks among the most prevalent application protocols deployed by the World Wide Web. It facilitates communication between web browsers and web servers. Notably, HTTP is a stateless, text-based protocol.
+
+Here's how it operates: An HTTP client or web browser dispatches a request message to an HTTP server or web server, which, in turn, furnishes a response message. It's essential to note that HTTP functions as a pull protocol, with the client pulling information from the server rather than the server pushing information to the client.
+
+HTTPS functions identically to HTTP, albeit with enhanced security. The appended letter 'S' signifies 'security,' implying the utilization of an SSL certificate, as mentioned earlier.
+
+HTTP Requests and Response Status Codes
+HTTP requests encompass an array of methods:
+
+GET: Utilized to retrieve data from a web server.
+POST: Employed to dispatch data to a web server.
+PUT: Utilized to update data on a web server.
+DELETE: Employed to eradicate data from a web server.
+An HTTP request invariably yields a response, delineated by a status code indicating the success or failure of the request. Some of the most prevalent status codes include:
+
+Informational responses (100–199)
+Successful responses (200–299)
+Redirection messages (300–399)
+Client error responses (400–499)
+Server error responses (500–599)
+Web and Application Servers
+A web server denotes computer software and associated hardware tasked with processing requests via HTTP/HTTPS and delivering static content, such as basic HTML pages, images, or plain text files—content that remains unaltered. The web server's duty encompasses locating content corresponding to the requested website address and serving it as an HTTP/HTTPS response. Examples of web servers include Nginx or Apache.
+
+However, most websites don't solely comprise static content. Conversely, many web applications rely on dynamic content—content that fluctuates. This implies interactivity with the website, data storage within it, user authentication via usernames and passwords, among other functionalities. Enter the application server!
+
+An application server constitutes a software program entrusted with operating applications, interfacing with database servers, managing user information, and more. It collaborates with web servers, enabling the provision of dynamic applications leveraging static content from the web server.
+
+Database
+Another pivotal component within the client-server computing paradigm is the database server, encompassing both hardware and software dedicated to database operations. A database comprises a collection of data, with the database server serving as the conduit for interactions with the database, encompassing retrieval, addition, and modification of data. The two primary types are relational databases and non-relational databases. Popular examples include PostgreSQL, MySQL, SQLite, and MariaDB.
+
+In Conclusion
+All these intricate processes—data transmission and reception—unfold swiftly, often imperceptible to the user. However, every time we input 'www.google.com,' these processes ensue. It is my hope that this article has provided you with a deeper comprehension of the intricacies involved in accessing www.google.com.
+
